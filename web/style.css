@@ -3,18 +3,15 @@ body{
     height: 100%;
 }
 
-div{
-    width: 10em;
-    height: 30px;
+#header {font-weight: bold;}
+#table {position: relative;}
+
+.team{
+    position: absolute;
+    -webkit-transition:all 1s;
 }
 
-#blackburn {
-    transition: all 1s;
-    -webkit-transition: all 1s;
-    background-color: green;
-    -webkit-transform: translateY(30px);
-}
+span{ display: inline-block; }
+span:nth-child(1) {width: 10em;}
+span:nth-child(n+2) {width: 2em; text-align: center;}
 
-#liverpool {}
-#mancity {}
-#manunited {}

@@ -1,5 +1,5 @@
 var League = require("./lib/league").League,
-    data = require("./jsonp/data");
+    data = require("./data");
 
 function l(){console.log.apply(this, Array.prototype.slice.call(arguments))}
 function i(obj){console.log(util.inspect(obj, true, null, true));}
