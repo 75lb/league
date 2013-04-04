@@ -5,7 +5,7 @@ var assert = require("assert"),
 function l(){console.log(Array.prototype.slice.call(arguments))}
 function i(obj){console.log(util.inspect(obj, true, null, true));}
 
-it("basic scenario", function(){
+it("basic scenario 1: addTeam(), addResult() then getTable()", function(){
     var league = new League();
     
     league.addTeam({ id: 1, name: "Man United" });
@@ -160,7 +160,7 @@ it("basic scenario", function(){
     });
 });
 
-it("teams should correctly state a move 'up', 'down' or '-'", function(){
+it("basic scenario 2: addTeam(), addResult() then getTable()", function(){
     var league = new League();
     
     league.addTeam({ id: 1, name: "Man United" });

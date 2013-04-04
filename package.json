@@ -1,8 +1,8 @@
 {
   "name": "league",
-  "version": "0.0.0",
-  "description": "League table task",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "League table",
+  "main": "lib/league.js",
   "scripts": {
     "test": "mocha --reporter spec test/*.js"
   },
