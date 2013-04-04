@@ -44,8 +44,6 @@ it("basic scenario", function(){
     
     var table1 = league.getTable("13 aug 11");
     var table2 = league.getTable("20 aug 11");
-    // i(table1);
-    // i(table2);
     
     assert.deepEqual(table1[0], { 
         id: '2',
@@ -201,8 +199,6 @@ it("teams should correctly state a move 'up', 'down' or '-'", function(){
     
     var table1 = league.getTable("13 aug 11");
     var table2 = league.getTable("20 aug 11");
-    // i(table1);
-    // i(table2);
     
     assert.deepEqual(table1[0],  
         { id: '3',
