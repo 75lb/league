@@ -3,15 +3,21 @@ body{
     height: 100%;
 }
 
+h3 {margin: 0 0 0.5em 0;}
 #header {font-weight: bold;}
 #table {position: relative;}
 
-.team{
+.team {
     position: absolute;
-    -webkit-transition:all 1s;
+    -webkit-transition: all 0.5s; 
+       -moz-transition: all 0.5s; 
+         -o-transition: all 0.5s;
+            transition: all 0.5s;
 }
 
 span{ display: inline-block; }
-span:nth-child(1) {width: 10em;}
+span:nth-child(1) {width: 8em;}
 span:nth-child(n+2) {width: 2em; text-align: center;}
 
+.up{ background-color: #E3FFE3; }
+.down{ background-color: #FFE3E3; }
