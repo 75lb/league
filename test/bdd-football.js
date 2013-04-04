@@ -43,6 +43,10 @@ it("basic scenario", function(){
     });
     
     var table1 = league.getTable("13 aug 11");
+    var table2 = league.getTable("20 aug 11");
+    // i(table1);
+    // i(table2);
+    
     assert.deepEqual(table1[0], { 
         id: '2',
         team: 'Chelsea',
@@ -54,7 +58,8 @@ it("basic scenario", function(){
         goalsAgainst: 0,
         goalDifference: 4,
         points: 3,
-        move: '-' 
+        move: '-',
+        position: 1
     });
     assert.deepEqual(table1[1], { 
         id: '3',
@@ -67,7 +72,8 @@ it("basic scenario", function(){
         goalsAgainst: 1,
         goalDifference: 0,
         points: 1,
-        move: '-'
+        move: '-',
+        position: 2
     });
     assert.deepEqual(table1[2], { 
         id: '4',
@@ -80,7 +86,8 @@ it("basic scenario", function(){
         goalsAgainst: 1,
         goalDifference: 0,
         points: 1,
-        move: '-'
+        move: '-',
+        position: 3
     });
     assert.deepEqual(table1[3], { 
         id: '1',
@@ -93,10 +100,10 @@ it("basic scenario", function(){
         goalsAgainst: 4,
         goalDifference: -4,
         points: 0,
-        move: '-'
+        move: '-',
+        position: 4
     });
     
-    var table2 = league.getTable("20 aug 11");
     assert.deepEqual(table2[0], { 
         id: '2',
         team: 'Chelsea',
@@ -108,7 +115,8 @@ it("basic scenario", function(){
         goalsAgainst: 0,
         goalDifference: 9,
         points: 6,
-        move: 'up' 
+        move: '-',
+        position: 1
     });
     assert.deepEqual(table2[1], { 
         id: '1',
@@ -121,7 +129,8 @@ it("basic scenario", function(){
         goalsAgainst: 4,
         goalDifference: -2,
         points: 3,
-        move: 'up' 
+        move: 'up',
+        position: 2
     });
     assert.deepEqual(table2[2], { 
         id: '3',
@@ -134,7 +143,8 @@ it("basic scenario", function(){
         goalsAgainst: 3,
         goalDifference: -2,
         points: 1,
-        move: '-' 
+        move: 'down',
+        position: 3
     });
     assert.deepEqual(table2[3], { 
         id: '4',
@@ -147,7 +157,8 @@ it("basic scenario", function(){
         goalsAgainst: 6,
         goalDifference: -5,
         points: 1,
-        move: '-' 
+        move: 'down',
+        position: 4
     });
 });
 
@@ -190,7 +201,6 @@ it("teams should correctly state a move 'up', 'down' or '-'", function(){
     
     var table1 = league.getTable("13 aug 11");
     var table2 = league.getTable("20 aug 11");
-    
     // i(table1);
     // i(table2);
     
@@ -205,7 +215,8 @@ it("teams should correctly state a move 'up', 'down' or '-'", function(){
           goalsAgainst: 2,
           goalDifference: 0,
           points: 1,
-          move: '-' }
+          move: '-',
+          position: 1 }
     );
     assert.deepEqual(table1[1], 
         { id: '4',
@@ -218,7 +229,8 @@ it("teams should correctly state a move 'up', 'down' or '-'", function(){
           goalsAgainst: 2,
           goalDifference: 0,
           points: 1,
-          move: '-' }
+          move: '-',
+          position: 2 }
     );
     assert.deepEqual(table1[2], 
         { id: '1',
@@ -231,7 +243,8 @@ it("teams should correctly state a move 'up', 'down' or '-'", function(){
           goalsAgainst: 1,
           goalDifference: 0,
           points: 1,
-          move: '-' }
+          move: '-',
+          position: 3 }
     );
     assert.deepEqual(table1[3], 
         { id: '2',
@@ -244,7 +257,8 @@ it("teams should correctly state a move 'up', 'down' or '-'", function(){
           goalsAgainst: 1,
           goalDifference: 0,
           points: 1,
-          move: '-' }
+          move: '-',
+          position: 4 }
     );
     
     assert.deepEqual(table2[0], 
@@ -258,7 +272,8 @@ it("teams should correctly state a move 'up', 'down' or '-'", function(){
           goalsAgainst: 2,
           goalDifference: 2,
           points: 4,
-          move: 'up' }
+          move: 'up',
+          position: 1 }
     );
     assert.deepEqual(table2[1], 
         { id: '1',
@@ -271,7 +286,8 @@ it("teams should correctly state a move 'up', 'down' or '-'", function(){
           goalsAgainst: 1,
           goalDifference: 2,
           points: 4,
-          move: 'up' }
+          move: 'up',
+          position: 2 }
     );
     assert.deepEqual(table2[2], 
         { id: '3',
@@ -284,7 +300,8 @@ it("teams should correctly state a move 'up', 'down' or '-'", function(){
           goalsAgainst: 4,
           goalDifference: -2,
           points: 1,
-          move: 'down' }
+          move: 'down',
+          position: 3 }
     );
     assert.deepEqual(table2[3], 
         { id: '2',
@@ -297,6 +314,7 @@ it("teams should correctly state a move 'up', 'down' or '-'", function(){
           goalsAgainst: 3,
           goalDifference: -2,
           points: 1,
-          move: '-' }
+          move: '-',
+          position: 4 }
     );
 });
