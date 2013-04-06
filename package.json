@@ -11,5 +11,9 @@
   "license": "BSD",
   "devDependencies": {
     "mocha": "~1.9.0"
+  },
+  "dependencies": {
+    "ansi": "~0.1.2",
+    "sprintf-js": "0.0.7"
   }
 }

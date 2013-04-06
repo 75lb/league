@@ -32,7 +32,7 @@ LeagueView.prototype.build = function(){
 };
 LeagueView.prototype.draw = function(matchdayIndex){
     var self = this,
-        matchday = league.history[matchdayIndex];
+        matchday = this.league.history[matchdayIndex];
     if (matchday) {
         this.dateElement.textContent = new Date(matchday.date).toDateString();
         matchday.table.forEach(function(team){
