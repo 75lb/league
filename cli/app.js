@@ -5,6 +5,7 @@ var League = require("../lib/league").League,
 
 function LeagueView(league){
     this.league = league;
+    this.screenCleared = false;
 }
 LeagueView.prototype.draw = function(matchdayIndex){
     var self = this,
@@ -12,8 +13,11 @@ LeagueView.prototype.draw = function(matchdayIndex){
         format      = "%-13s %3s %3s %3s %3s %3s %3s %3s %3s\n",
         formatShort = "%-13s %3s %3s %3s %3s %3s %3s %3s";
     if (matchday) {
-        cursor.eraseData(2)
-            .goto(1,1)
+        if (!this.screenCleared) {
+            cursor.eraseData(2);
+            this.screenCleared = true;
+        }
+        cursor.goto(1,1)
             .bold()
             .write(sprintf(format, "Team", "P", "W", "D", "L", "F", "A", "GD", "Pts" ))
             .reset();
