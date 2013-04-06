@@ -1,8 +1,9 @@
 (function(){
 
-function LeagueView(league, parentElement, dateElement){
+function LeagueView(league, tableElement, resultSection, dateElement){
     this.league = league;
-    this.parentElement = parentElement;
+    this.tableElement = tableElement;
+    this.resultSection = resultSection;
     this.dateElement = dateElement;
     this.teamElements = [];
     this.build();
@@ -20,7 +21,7 @@ LeagueView.prototype.build = function(){
         teamElement.row.className = "team";
         teamElement.row.appendChild(teamElement.colGroup1);
         teamElement.row.appendChild(teamElement.colGroup2);
-        self.parentElement.appendChild(teamElement.row);
+        self.tableElement.appendChild(teamElement.row);
         
         ["position", "team", "played", "won", "drawn", "lost", "goalsFor", "goalsAgainst", "goalDifference"].forEach(function(column){
             teamElement.colGroup1.appendChild(teamElement[column] = document.createElement("span"));
@@ -51,6 +52,21 @@ LeagueView.prototype.draw = function(matchdayIndex){
                 if (field !== "id" && field !== "move") teamElement[field].textContent = team[field];
             });
         });
+        
+        this.resultSection.innerHTML = "";
+        this.league.results[matchdayIndex].forEach(function(result){
+            var resultElement = document.createElement("div");
+            var homeElement = document.createElement("span");
+            var scoreElement = document.createElement("span");
+            var awayElement = document.createElement("span");
+            homeElement.textContent = self.league.teams[result.homeTeamId].name;
+            scoreElement.textContent = result.homeGoals + " - " + result.awayGoals;
+            awayElement.textContent = self.league.teams[result.awayTeamId].name;
+            resultElement.appendChild(homeElement);
+            resultElement.appendChild(scoreElement);
+            resultElement.appendChild(awayElement);
+            self.resultSection.appendChild(resultElement);
+        })
     }
 }
 
@@ -59,9 +75,10 @@ var league = new window.league.League()
     .addResult(window.league._games);
 
 var tableElement = document.getElementById("table"),
+    resultSection = document.getElementById("results"),
     dateElement = document.getElementById("date"),
     matchday = 0,
-    leagueView = new LeagueView(league, tableElement, dateElement);
+    leagueView = new LeagueView(league, tableElement, resultSection, dateElement);
 
 leagueView.draw(matchday);
 

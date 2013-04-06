@@ -1,10 +1,10 @@
 body{
     font-size:18px;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-/*    color: white;*/
-/*    background-color: blue;*/
 }
 
+section {display:inline-block; vertical-align: top;}
+section.left { width: 530px; }
 h3 {
     margin: 0 0 0.5em 0;
 }
@@ -76,23 +76,22 @@ span{ display: inline-block; }
     background-image:         linear-gradient(to bottom, #ff8888, #790808);
 }
 
-.position1 {top: 0px;}
-.position2 {top: 32px;}
-.position3 {top: 64px;}
-.position4 {top: 96px;}
-.position5 {top: 128px;}
-.position6 {top: 160px;}
-.position7 {top: 192px;}
-.position8 {top: 224px;}
-.position9 {top: 256px;}
-.position10 {top: 288px;}
-.position11 {top: 320px;}
-.position12 {top: 352px;}
-.position13 {top: 384px;}
-.position14 {top: 416px;}
-.position15 {top: 448px;}
-.position16 {top: 480px;}
-.position17 {top: 512px;}
-.position18 {top: 544px;}
-.position19 {top: 576px;}
-.position20 {top: 608px;}
+.position1 {top: 0px;} .position2 {top: 32px;} .position3 {top: 64px;} .position4 {top: 96px;}
+.position5 {top: 128px;} .position6 {top: 160px;} .position7 {top: 192px;} .position8 {top: 224px;}
+.position9 {top: 256px;} .position10 {top: 288px;} .position11 {top: 320px;} .position12 {top: 352px;}
+.position13 {top: 384px;} .position14 {top: 416px;} .position15 {top: 448px;} .position16 {top: 480px;}
+.position17 {top: 512px;} .position18 {top: 544px;} .position19 {top: 576px;} .position20 {top: 608px;}
+
+#results div { font-weight: bold; margin: 1em 0;}
+#results div span { display: inline-block; }
+#results div span:nth-child(1) { width: 7em; text-align: right;}
+#results div span:nth-child(2) { width: 3em; margin: 0 1em;}
+#results div span:nth-child(3) { width: 7em; }
+#results div span:nth-child(2) { 
+    background-color: #790808; 
+    color: white; 
+    text-align: center; 
+    border-radius: 5px; 
+    padding: 0.2em;
+    font-weight: normal;
+}
