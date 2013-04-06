@@ -1,87 +1,80 @@
 (function(){
 
+function LeagueView(league, parentElement, dateElement){
+    this.league = league;
+    this.parentElement = parentElement;
+    this.dateElement = dateElement;
+    this.teamElements = [];
+    this.build();
+}
+LeagueView.prototype.build = function(){
+    var self = this;
+    Object.keys(this.league.teams).forEach(function(teamId){
+        var team = self.league.teams[teamId];
+        var teamElement = {
+            row: document.createElement("div"),
+            colGroup1: document.createElement("div"),
+            colGroup2: document.createElement("div"),
+        };
+        teamElement.row.id = team.name;
+        teamElement.row.className = "team";
+        teamElement.row.appendChild(teamElement.colGroup1);
+        teamElement.row.appendChild(teamElement.colGroup2);
+        self.parentElement.appendChild(teamElement.row);
+        
+        ["position", "team", "played", "won", "drawn", "lost", "goalsFor", "goalsAgainst", "goalDifference"].forEach(function(column){
+            teamElement.colGroup1.appendChild(teamElement[column] = document.createElement("span"));
+        });
+        teamElement.colGroup2.appendChild(teamElement.points = document.createElement("span"));
+        self.teamElements[team.id] = teamElement;
+    });
+    return this;
+};
+LeagueView.prototype.draw = function(matchdayIndex){
+    var self = this,
+        matchday = league.history[matchdayIndex];
+    if (matchday) {
+        this.dateElement.textContent = new Date(matchday.date).toDateString();
+        matchday.table.forEach(function(team){
+            var teamElement = self.teamElements[team.id],
+                className;
+            if (team.move == "up"){
+                className = "team up";
+            } else if (team.move == "down"){
+                className = "team down";
+            } else {
+                className = "team";
+            }
+            className += " position" + team.position;
+            teamElement.row.className = className;
+            Object.keys(team).forEach(function(field){
+                if (field !== "id" && field !== "move") teamElement[field].textContent = team[field];
+            });
+        });
+    }
+}
+
 var league = new window.league.League()
     .addTeam(window.league._teams)
     .addResult(window.league._games);
 
-var table = document.getElementById("table"),
-    date = document.getElementById("date"),
+var tableElement = document.getElementById("table"),
+    dateElement = document.getElementById("date"),
     teamElements = [],
-    i=0;
-    
-function updateTable(){
-    var history = league.history[i++];
-    if (history){
-        date.textContent = new Date(history.date).toDateString();
-        history.table.forEach(function(team){
-            var teamElement = teamElements[team.id];
-            if (!teamElement){
-                teamElement = buildRow(team);
-                table.appendChild(teamElement.row);
-                teamElements[team.id] = teamElement;
-            }
-            
-            teamElement.row.style.top = ((team.position-1) * 28) + "px";
-            if (team.move == "up"){
-                teamElement.row.className = "team up";
-            } else if (team.move == "down"){
-                teamElement.row.className = "team down";
-            } else {
-                teamElement.row.className = "team";
-            }
-            teamElement.played.textContent = team.played;
-            teamElement.won.textContent = team.won;
-            teamElement.drawn.textContent = team.drawn;
-            teamElement.lost.textContent = team.lost;
-            teamElement.for.textContent = team.goalsFor;
-            teamElement.against.textContent = team.goalsAgainst;
-            teamElement.diff.textContent = team.goalDifference;
-            teamElement.points.textContent = team.points;
-        });
-    } else {
-        clearInterval(updateInterval);
+    matchday = 0,
+    leagueView = new LeagueView(league, tableElement, dateElement);
+
+leagueView.draw(matchday);
+
+tableElement.focus();
+document.addEventListener("keydown", function(e){
+    if (e.keyCode == 37){
+        leagueView.draw(--matchday);
+    } else if (e.keyCode == 39){
+        leagueView.draw(++matchday);
     }
-}
-
-updateTable();
-var updateInterval = setInterval(updateTable, 1600);
-
-function buildRow(team){
-    var teamElement = {
-        id: team.id,
-        row: document.createElement("div"),
-        name: document.createElement("span"),
-        played: document.createElement("span"),
-        won: document.createElement("span"),
-        drawn: document.createElement("span"),
-        lost: document.createElement("span"),
-        for: document.createElement("span"),
-        against: document.createElement("span"),
-        diff: document.createElement("span"),
-        points: document.createElement("span"),
-    }
-    teamElement.name.textContent = team.team;
-    teamElement.played.textContent = team.played;
-    teamElement.won.textContent = team.won;
-    teamElement.drawn.textContent = team.drawn;
-    teamElement.lost.textContent = team.lost;
-    teamElement.for.textContent = team.goalsFor;
-    teamElement.against.textContent = team.goalsAgainst;
-    teamElement.diff.textContent = team.goalDifference;
-    teamElement.points.textContent = team.points;
-
-    teamElement.row.appendChild(teamElement.name);
-    teamElement.row.appendChild(teamElement.played);
-    teamElement.row.appendChild(teamElement.won);
-    teamElement.row.appendChild(teamElement.drawn);
-    teamElement.row.appendChild(teamElement.lost);
-    teamElement.row.appendChild(teamElement.for);
-    teamElement.row.appendChild(teamElement.against);
-    teamElement.row.appendChild(teamElement.diff);
-    teamElement.row.appendChild(teamElement.points);
-    teamElement.row.className = "team";
-    teamElement.row.id = team.team;
-    return teamElement;
-}
+    if (matchday < 0) matchday = 0;
+    if (matchday > league.history.length-1) matchday = league.history.length-1;
+});
 
 })();

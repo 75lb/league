@@ -1,4 +1,4 @@
-var League = require("./lib/league").League,
+var League = require("../lib/league").League,
     data = require("./data");
 
 function l(){console.log.apply(this, Array.prototype.slice.call(arguments))}
