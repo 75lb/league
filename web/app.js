@@ -60,7 +60,6 @@ var league = new window.league.League()
 
 var tableElement = document.getElementById("table"),
     dateElement = document.getElementById("date"),
-    teamElements = [],
     matchday = 0,
     leagueView = new LeagueView(league, tableElement, dateElement);
 

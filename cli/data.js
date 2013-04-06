@@ -19,12 +19,12 @@ API
 */
 exports.loadGames = function(){
     // lazy load on demand
-    require("../jsonp/games-jsonp");
+    require("../data/games-jsonp");
     return _games;    
 };
 
 exports.loadTeams = function(){
-    require("../jsonp/teams-jsonp");
+    require("../data/teams-jsonp");
     return _teams;
 };
 

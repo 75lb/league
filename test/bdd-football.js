@@ -1,6 +1,13 @@
-var assert = require("assert"),
-    util = require("util"),
+var assert, util, League;
+
+if(typeof window ==="undefined"){
+    assert = require("assert");
+    util = require("util");
     League = require("../lib/league").League;
+} else {
+    assert = chai.assert;
+    League = league.League;
+}
 
 function l(){console.log(Array.prototype.slice.call(arguments))}
 function i(obj){console.log(util.inspect(obj, true, null, true));}
