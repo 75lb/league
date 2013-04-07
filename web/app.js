@@ -87,20 +87,30 @@ var tableElement = document.getElementById("table"),
     dateElement = document.getElementById("date"),
     notification = document.getElementById("notification"),
     addResults = document.getElementById("addResults"),
+    left = document.getElementById("left"),
+    right = document.getElementById("right"),
     matchday = 0,
     leagueView = new LeagueView(league, tableElement, resultSection, dateElement);
 
 leagueView.draw(matchday);
 
 tableElement.focus();
-document.addEventListener("keydown", function(e){
-    if (e.keyCode == 37){
+
+function navigate(dir){
+    if (dir == "backward"){
         leagueView.draw(--matchday);
-    } else if (e.keyCode == 39){
+    } else if (dir == "forward"){
         leagueView.draw(++matchday);
     }
     if (matchday < 0) matchday = 0;
     if (matchday > league.history.length-1) matchday = league.history.length-1;
+}
+document.addEventListener("keydown", function(e){
+    if (e.keyCode == 37){
+        navigate("backward");
+    } else if (e.keyCode == 39){
+        navigate("forward");
+    }
 });
 
 addResults.addEventListener("click", function(e){
@@ -121,6 +131,15 @@ addResults.addEventListener("click", function(e){
     }
     league.addResult(results);
     notify("added " + results.length + " results to " + new Date(newDate).toDateString());
+});
+
+left.addEventListener("click", function(e){
+    e.preventDefault();
+    navigate("backward");
+});
+right.addEventListener("click", function(e){
+    e.preventDefault();
+    navigate("forward");
 });
 
 function notify(text){
