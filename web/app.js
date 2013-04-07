@@ -70,6 +70,14 @@ LeagueView.prototype.draw = function(matchdayIndex){
     }
 }
 
+function Match(date, homeTeamId, awayTeamId, homeGoals, awayGoals){
+    this.date = date,
+    this.homeTeamId = homeTeamId,
+    this.awayTeamId = awayTeamId,
+    this.homeGoals = homeGoals
+    this.awayGoals = awayGoals
+}
+
 var league = new window.league.League()
     .addTeam(window.league._teams)
     .addResult(window.league._games);
@@ -77,6 +85,8 @@ var league = new window.league.League()
 var tableElement = document.getElementById("table"),
     resultSection = document.getElementById("results"),
     dateElement = document.getElementById("date"),
+    notification = document.getElementById("notification"),
+    addResults = document.getElementById("addResults"),
     matchday = 0,
     leagueView = new LeagueView(league, tableElement, resultSection, dateElement);
 
@@ -92,5 +102,37 @@ document.addEventListener("keydown", function(e){
     if (matchday < 0) matchday = 0;
     if (matchday > league.history.length-1) matchday = league.history.length-1;
 });
+
+addResults.addEventListener("click", function(e){
+    e.preventDefault();
+    var results = [],
+        newDate = league.history[league.history.length-1].date + (1000 * 60 * 60 * 24);
+            
+    for(var i = 0; i < parseInt(Math.random() * 10) + 1; i++){
+        var homeTeamId = parseInt(Math.random() * 20) + 1,
+            awayTeamId = parseInt(Math.random() * 20) + 1;        
+        results.push({
+            date: newDate,
+            homeTeamId: homeTeamId,
+            awayTeamId: awayTeamId, 
+            homeGoals: parseInt(Math.random() * 10) + 1,
+            awayGoals: parseInt(Math.random() * 10) + 1
+        })
+    }
+    league.addResult(results);
+    notify("added " + results.length + " results to " + new Date(newDate).toDateString());
+});
+
+function notify(text){
+    notification.innerHTML = "";
+    var msg = document.createElement("span");
+    msg.className = "notification";
+    msg.textContent = text;
+    notification.appendChild(msg);
+    msg.style.opacity = 1;
+    setTimeout(function(){
+        msg.style.opacity = 0;
+    },10);
+}
 
 })();
