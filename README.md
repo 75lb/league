@@ -4,9 +4,9 @@ A Football League model. Put teams and results in, get a league table history ou
 
 * One language, one Application Layer, one test suite - each used on both client and server (the Holy Grail?) 
 * MVC architecture
-* Handrolled, no dependecies on 3rd party libraries or frameworks
+* 100% Handrolled javascript and CSS, no dependecies on 3rd party libraries or frameworks
 * Tested in Chrome, Safari, Firefox, Opera
-
+* HTML5, CSS3, EcmaScript 5
 
 Web View
 --------
