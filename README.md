@@ -26,7 +26,7 @@ $ git clone https://github.com/75lb/league.git
 $ npm install
 $ node cli/app.js
 ```
-[Click here](cli/screencast.m4v) to watch a screencast of the CLI animation
+A screencast showing the CLI animation is [here](cli/screencast.m4v).
 ###Test
 ```sh
 $ npm test
