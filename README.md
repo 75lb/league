@@ -8,6 +8,11 @@ A Football League model. Put teams and results in, get a league table history ou
 * Tested in Chrome, Safari, Firefox, Opera
 * HTML5, CSS3, EcmaScript 5
 
+Todo
+
+* Responsive CSS
+* Connection to a live result service
+
 Web View
 --------
 ###View league
