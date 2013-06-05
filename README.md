@@ -46,3 +46,5 @@ league.addTeam({ id: "2", name: "Port Vale" });
 league.addResult({ date: "10 Sep 2012", homeTeamId: 1, awayTeamId: 2, homeGoals: 6, awayGoals: 0 });
 console.log(league.getTable("10 Sep 2012"));
 ```
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a08246f4b66544139f5e4d8167f6525f "githalytics.com")](http://githalytics.com/75lb/league)
