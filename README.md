@@ -48,3 +48,4 @@ console.log(league.getTable("10 Sep 2012"));
 ```
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a08246f4b66544139f5e4d8167f6525f "githalytics.com")](http://githalytics.com/75lb/league)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/75lb/league/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
