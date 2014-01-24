@@ -1,5 +1,4 @@
 [![NPM version](https://badge.fury.io/js/league.png)](http://badge.fury.io/js/league)
-[![Build Status](https://travis-ci.org/75lb/league.png?branch=master)](https://travis-ci.org/75lb/league)
 [![Dependency Status](https://david-dm.org/75lb/league.png)](https://david-dm.org/75lb/league)
 ![Analytics](https://ga-beacon.appspot.com/UA-27725889-11/league/README.md?pixel)
 
@@ -51,3 +50,5 @@ league.addTeam({ id: "2", name: "Port Vale" });
 league.addResult({ date: "10 Sep 2012", homeTeamId: 1, awayTeamId: 2, homeGoals: 6, awayGoals: 0 });
 console.log(league.getTable("10 Sep 2012"));
 ```
+
+[![NPM](https://nodei.co/npm-dl/league.png?months=3)](https://nodei.co/npm/league/)
