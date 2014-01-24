@@ -1,6 +1,6 @@
 {
   "name": "league",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "English Premier League table model",
   "main": "lib/league.js",
   "scripts": {
