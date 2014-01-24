@@ -1,7 +1,7 @@
 {
   "name": "league",
   "version": "0.0.3",
-  "description": "League table",
+  "description": "English Premier League table model",
   "main": "lib/league.js",
   "scripts": {
     "test": "mocha --reporter spec test/*.js"
@@ -10,10 +10,10 @@
   "author": "Lloyd Brookes",
   "license": "BSD",
   "devDependencies": {
-    "mocha": "~1.9.0"
+    "mocha": "~1.17.0"
   },
   "dependencies": {
-    "ansi": "~0.1.2",
+    "ansi": "~0.2.1",
     "sprintf-js": "0.0.7"
   }
 }

@@ -1,3 +1,8 @@
+[![NPM version](https://badge.fury.io/js/league.png)](http://badge.fury.io/js/league)
+[![Build Status](https://travis-ci.org/75lb/league.png?branch=master)](https://travis-ci.org/75lb/league)
+[![Dependency Status](https://david-dm.org/75lb/league.png)](https://david-dm.org/75lb/league)
+![Analytics](https://ga-beacon.appspot.com/UA-27725889-11/league/README.md?pixel)
+
 League
 ======
 A Football League model. Put teams and results in, get a league table history out. 
@@ -46,6 +51,3 @@ league.addTeam({ id: "2", name: "Port Vale" });
 league.addResult({ date: "10 Sep 2012", homeTeamId: 1, awayTeamId: 2, homeGoals: 6, awayGoals: 0 });
 console.log(league.getTable("10 Sep 2012"));
 ```
-
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a08246f4b66544139f5e4d8167f6525f "githalytics.com")](http://githalytics.com/75lb/league)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/75lb/league/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
